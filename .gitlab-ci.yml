@@ -1,0 +1,42 @@
+image: java:latest
+
+stages:
+  - print-env
+  - clean
+  - test
+  - publish
+
+print environment:
+  stage: print-env
+  script:
+    - hostname
+    - java -version
+    - mvn --version
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[maven-release-plugin\]/
+
+clean:
+  stage: clean
+  script: mvn clean
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[maven-release-plugin\]/
+
+build:
+  stage: test
+  script: mvn install
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[maven-release-plugin\]/
+
+deploy:
+  stage: publish
+  only:
+    - master
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[maven-release-plugin\]/
+  script:
+    - git checkout -B master
+    - mvn -DskipTests=true --batch-mode release:prepare release:perform
