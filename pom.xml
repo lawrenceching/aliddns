@@ -93,36 +93,5 @@
             <artifactId>commons-cli</artifactId>
             <version>1.4</version>
         </dependency>
-
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Aliyum Repo</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>rdc-snapshots</id>
-            <url>https://repo.rdc.aliyun.com/repository/49016-snapshot-43uJNG</url>
-        </snapshotRepository>
-        <repository>
-            <id>rdc-releases</id>
-            <url>https://repo.rdc.aliyun.com/repository/49016-release-zm8dpy/</url>
-        </repository>
-    </distributionManagement>
-
-    <scm>
-        <developerConnection>scm:git:ssh://git@gitlab.imlc.me:2222/lawrence/aliddns.git</developerConnection>
-        <tag>aliddns-1.0</tag>
-    </scm>
 </project>
