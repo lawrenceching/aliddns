@@ -6,7 +6,7 @@ ADD target/aliddns-1.0.14-SNAPSHOT.jar /usr/src/app/aliddns-1.0.14-SNAPSHOT.jar
 
 CMD [ "java", "-jar", "/usr/src/app/aliddns-1.0.14-SNAPSHOT.jar", \
 "-d", \
-"--accessKeyId", "${ACCESS_KEU_ID}", \
+"--accessKeyId", "${ACCESS_KEY_ID}", \
 "--accessKeySecret", "${ACCESS_KEY_SECRET}", \
 "--rr", "${RR}", \
 "--type", "${TYPE}", \
