@@ -4,10 +4,6 @@
   <groupId>me.imlc.tools</groupId>
   <artifactId>aliddns</artifactId>
   <version>1.0.14-SNAPSHOT</version>
-  <scm>
-    <developerConnection>scm:git:ssh://git@gitlab.imlc.me:2222/lawrence/aliddns.git</developerConnection>
-    <tag>aliddns-1.0</tag>
-  </scm>
   <build>
     <plugins>
       <plugin>
@@ -65,23 +61,4 @@
       </plugin>
     </plugins>
   </build>
-  <repositories>
-    <repository>
-      <releases />
-      <snapshots />
-      <id>central</id>
-      <name>Aliyum Repo</name>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </repositories>
-  <distributionManagement>
-    <repository>
-      <id>rdc-releases</id>
-      <url>https://repo.rdc.aliyun.com/repository/49016-release-zm8dpy/</url>
-    </repository>
-    <snapshotRepository>
-      <id>rdc-snapshots</id>
-      <url>https://repo.rdc.aliyun.com/repository/49016-snapshot-43uJNG</url>
-    </snapshotRepository>
-  </distributionManagement>
 </project>
