@@ -19,6 +19,43 @@ usage: aliddns
     --type <arg>              Domain type
 ```
 
+## Get Started
+
+### Docker 
+```bash
+docker run aliddns \
+  -d -t 60 \
+  --accessKeyId <ACCESS_KEY_ID> \
+  --accessKeySecret <ACCESS_KEY_SECRET> \
+  --rr foo --domain example.com --type A
+```
+
+### Kubernetes
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aliddns
+  labels:
+    app: aliddns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aliddns
+  template:
+    metadata:
+      labels:
+        app: aliddns
+    spec:
+      containers:
+        - name: aliddns
+          image: lawrenceching/aliddns
+          imagePullPolicy: Always
+          args: ["-d", "-t", "300", "--accessKeyId", "<ACCESS_KEY_ID>", "--accessKeySecret", "<ACCESS_KEY_SECRET>", "--rr", "foo", "--domain", "example.com", "--type", "A"]
+```
+
 ### Usage Case
 
 ##### DDNS
