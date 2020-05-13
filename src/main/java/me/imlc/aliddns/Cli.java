@@ -1,10 +1,10 @@
 package me.imlc.aliddns;
 
-import com.aliyuncs.exceptions.ClientException;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Optional;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -84,13 +84,14 @@ public class Cli {
             String rr = commandLine.getOptionValue("rr");
             String domain = commandLine.getOptionValue("domain");
             String type = commandLine.getOptionValue("type");
-            String ip = commandLine.getOptionValue("ip", detectPublicIp());
+            Optional<String> defaultIp = Optional.ofNullable(commandLine.getOptionValue("ip"));
             String interval = commandLine.getOptionValue("interval", String.valueOf(TimeUnit.MINUTES.toSeconds(5)));
 
             logger.debug("Use id \"{}\" and secret \"{}\"", id ,secret);
 
             Runnable setDns = () -> {
                 try {
+                    String ip = defaultIp.orElseGet(() -> detectPublicIp());
                     AliDns aliDns = new AliDns(id, secret);
                     aliDns.setDns(rr, domain, ip, type);
                 } catch (Throwable e) {
@@ -100,7 +101,7 @@ public class Cli {
 
             if(commandLine.hasOption("d")) {
                 logger.info("Started aliddns in daemon mode");
-                logger.info("aliddns will try to update ip every {} seconds", interval);
+                logger.info("aliddns will try to update defaultIp every {} seconds", interval);
 
                 ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
                 executor.scheduleAtFixedRate(setDns, 0, Long.parseLong(interval), TimeUnit.SECONDS);

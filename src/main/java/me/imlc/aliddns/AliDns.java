@@ -68,7 +68,7 @@ public class AliDns {
     }
 
     public void setDns(String rr, String domain, String ip, String type) throws ClientException {
-        logger.info(I18n.setDns(rr + "." + domain, ip));
+        logger.info(I18n.startToSetDns(rr + "." + domain, ip));
 
         if(isExist(rr, domain, ip, type)) {
             logger.info("{}.{} -> {} is already exist, will not set same record again", rr, domain, ip);

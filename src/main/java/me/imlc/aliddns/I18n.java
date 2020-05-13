@@ -6,12 +6,12 @@ public class I18n {
 
     public static final String ZH_CN = "zh_CN";
 
-    public static String setDns(String domain, String ip) {
+    public static String startToSetDns(String domain, String ip) {
 
         if(Optional.ofNullable(System.getenv("LANG")).orElse("").contains(ZH_CN)) {
-            return String.format("设置 DNS %s -> %s", domain, ip);
+            return String.format("正常尝试设置 DNS %s -> %s", domain, ip);
         } else {
-            return String.format("Set DNS %s -> %s", domain, ip);
+            return String.format("Start to set DNS %s -> %s", domain, ip);
         }
     }
 
