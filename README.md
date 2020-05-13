@@ -1,5 +1,7 @@
 # aliddns
 
+![.github/workflows/maven.yml](https://github.com/lawrenceching/aliddns/workflows/.github/workflows/maven.yml/badge.svg)
+
 A tool to implement DDNS via Ali DNS service.
 Internet access is required for public ip detection.
 
