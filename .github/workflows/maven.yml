@@ -32,4 +32,4 @@ jobs:
         repository: lawrenceching/aliddns
         tag_with_ref: true
         tag_with_sha: true
-        tags: v0.0.1
+        tags: 0.0.${{ github.run_number}},latest
