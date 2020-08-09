@@ -9,8 +9,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static me.imlc.aliddns.Utils.detectPublicIp;
-
 public class Cli {
 
     private static Logger logger = LoggerFactory.getLogger(Cli.class);
@@ -89,9 +87,11 @@ public class Cli {
 
             logger.debug("Use id \"{}\" and secret \"{}\"", id ,secret);
 
+            Utils u = new Utils();
+
             Runnable setDns = () -> {
                 try {
-                    String ip = defaultIp.orElseGet(() -> detectPublicIp());
+                    String ip = defaultIp.orElseGet(() -> u.detectPublicIp());
                     AliDns aliDns = new AliDns(id, secret);
                     aliDns.setDns(rr, domain, ip, type);
                 } catch (Throwable e) {
