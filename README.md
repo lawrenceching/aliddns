@@ -25,7 +25,7 @@ usage: aliddns
 
 ### Docker 
 ```bash
-docker run aliddns \
+docker run lawrenceching/aliddns \
   -d -t 60 \
   --accessKeyId <ACCESS_KEY_ID> \
   --accessKeySecret <ACCESS_KEY_SECRET> \
